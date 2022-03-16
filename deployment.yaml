@@ -12,7 +12,7 @@ spec:
         name: helloworld
     spec:
       containers:
-        - name: app
+        - name: hello-world
           image: 
           ports:
             - containerPort: 8080
