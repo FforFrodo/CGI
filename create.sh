@@ -36,3 +36,20 @@ kubectl get svc
 kubectl delete deploy testdeployment
 
 kubectl delete service hello-world
+
+##### Auto Scaling 
+# check status of autoscaler
+kubectl get hpa
+
+# Test infinite requests ## Run this in a separate terminal
+kubectl run -i --tty load-generator --rm --image=busybox --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://php-apache; done"
+# type Ctrl+C to end
+
+# To watch the Autoscaler:
+# type Ctrl+C to end
+kubectl get hpa php-apache --watch
+
+# Kill Busy box requests with Ctrl + C
+
+# check pod replicas
+kubectl get deployment php-apache
