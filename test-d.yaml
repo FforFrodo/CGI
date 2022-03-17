@@ -1,18 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: helloworld
+  name: scaleddeployment
+  labels:
+    app: nginx
 spec:
+  replicas: 3
   selector:
     matchLabels:
-      name: helloworld
+      app: nginx
   template:
     metadata:
-      name: helloword
+      labels:
+        app: nginx
     spec:
       containers:
         - name: hello-world-container
-          image: nginx:latest
+          image: fforfrodo/helloworld:latest
+          ports:
+          - containerPort: 80
           resources:
             limits:
               memory: 512Mi
@@ -20,4 +26,3 @@ spec:
             requests:
               memory: 256Mi
               cpu: "0.2"
-  replicas: 3  
