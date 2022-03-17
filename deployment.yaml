@@ -8,11 +8,16 @@ spec:
       name: helloworld
   template:
     metadata:
-      labels:
-        name: helloworld
+      name: helloword
     spec:
       containers:
-        - name: hello-world
-          image: 
-          ports:
-            - containerPort: 8080
+        - name: hello-world-container
+          image: nginx:latest
+          resources:
+            limits:
+              memory: 512Mi
+              cpu: "1"
+            requests:
+              memory: 256Mi
+              cpu: "0.2"
+  replicas: 3  

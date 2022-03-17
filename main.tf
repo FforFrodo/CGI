@@ -48,4 +48,11 @@ resource "azurerm_kubernetes_cluster" "aks" {
 //     load_balancer_sku = "Standard"
 //     network_plugin    = "kubenet" 
 //   }
+
+# For enabling AKS ingress. Does not use Round robin
+  // addon_profile {
+  //   http_application_routing {
+  //     enabled = true
+  //   }
+  // }
 }
