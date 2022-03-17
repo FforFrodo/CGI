@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: docker build . -t fforfrodo/helloworld
       
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
@@ -33,6 +33,6 @@ jobs:
         build-args: |
           arg1=value1
           arg2=value2
-        cache-from: type=registry,ref=fforfrodo/hellowworld:latest
+        cache-from: type=registry,ref=fforfrodo/helloworld
         cache-to: type=inline
-        tags: fforfrodo/hellowworld:latest
+        tags: fforfrodo/helloworld:latest
