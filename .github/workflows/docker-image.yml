@@ -33,6 +33,6 @@ jobs:
         build-args: |
           arg1=value1
           arg2=value2
-        cache-from: type=registry,ref=fforfrodo/hellowworld:latest
+        cache-from: type=registry,ref=fforfrodo/helloworld
         cache-to: type=inline
-        tags: fforfrodo/hellowworld:latest
+        tags: fforfrodo/helloworld
