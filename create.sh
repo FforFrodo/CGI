@@ -27,12 +27,12 @@ kubectl get pods
 kubectl port-forward $(kubectl get pod -l name=hello-world --no-headers | awk '{print $1}') 8080:8080
 
 # start loadbalancer.yaml to expose pods on external ip
-kubectl apply -f service-loadbalancer.yaml
+kubectl apply -f service.yaml
 
 # Retrieve the load balancer's ip address, test External IP
 kubectl get svc
 
 # Delete Deployment, Delete Service
-kubectl delete deploy nginx-deployment
+kubectl delete deploy testdeployment
 
 kubectl delete service hello-world
