@@ -18,11 +18,15 @@ deploy: ## Apply Deployment & Loadbalancer
 	kubectl apply -f stable-d.yaml
 	kubectl apply -f service.yaml
 
-test:
+test: ## Apply Testing deployment and test loadbalancer
 	kubectl apply -f test-d.yaml
 	kubectl apply -f service.yaml
 	kubectl apply -f autoscaler.yaml
 
 delete: ## Delete Deployment & Loadbalancer
 	kubectl delete deploy stabledeployment
+	kubectl delete service my-service
+
+stop: ## Delete Testing deployment and test loadbalancer
+	kubectl delete deploy testdeployment
 	kubectl delete service my-service

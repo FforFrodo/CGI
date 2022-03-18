@@ -44,7 +44,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
     type = "SystemAssigned"
   }
 
-# For enabling AKS ingress. Does not use Round robin
+# For enabling AKS ingress
   // addon_profile {
   //   http_application_routing {
   //     enabled = true
