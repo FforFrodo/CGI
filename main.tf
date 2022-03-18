@@ -30,7 +30,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   resource_group_name = azurerm_resource_group.aks-rg.name
   dns_prefix          = var.cluster_name
 
-# define VM specs for worker nodes
+# define VM size for nodes (Standard_D2as_v5 = 2 CPU & 8 RAM)
   default_node_pool {
     name                = "system"
     node_count          = var.system_node_count
