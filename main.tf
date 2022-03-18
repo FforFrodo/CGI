@@ -36,18 +36,13 @@ resource "azurerm_kubernetes_cluster" "aks" {
     node_count          = var.system_node_count
     vm_size             = "Standard_D2as_v5"
     type                = "VirtualMachineScaleSets"
-    // availability_zones  = [1, 2, 3]
+    // availability_zones  = [1, 2, 3] # enabling results in allocation error for free account
     // enable_auto_scaling = false
   }
 # Credentials: Azure will automatically create required roles & permissions
   identity {
     type = "SystemAssigned"
   }
-
-//   network_profile {
-//     load_balancer_sku = "Standard"
-//     network_plugin    = "kubenet" 
-//   }
 
 # For enabling AKS ingress. Does not use Round robin
   // addon_profile {

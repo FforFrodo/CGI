@@ -12,30 +12,29 @@ mv kubeconfig ~/.kube/config
 # check nodes
 kubectl get nodes
 
-# build docker image of hello world webserver, push to acr
+### ignore build docker image of hello world webserver, push to acr
 az acr build --registry myazureregistry7532 --image hello-world:latest .
 
 # deploy k8s manifest, deploys the container with image on the cluster
-kubectl apply -f deployment.yaml
-
-kubectl apply -f nginx.yaml
+kubectl apply -f stable-d.yaml
+kubectl apply -f service.yaml
 
 # check pods, use pod name to forward to local port for local testing
 kubectl get pods
 
-# If testing local: forward pod name to 8080 for http://localhost:8080 
+### If testing local: forward pod name to 8080 for http://localhost:8080 
 kubectl port-forward $(kubectl get pod -l name=hello-world --no-headers | awk '{print $1}') 8080:8080
 
-# start loadbalancer.yaml to expose pods on external ip
+# start loadbalancer sevice to expose pods on external ip
 kubectl apply -f service.yaml
 
 # Retrieve the load balancer's ip address, test External IP
 kubectl get svc
 
 # Delete Deployment, Delete Service
-kubectl delete deploy testdeployment
+kubectl delete deploy stabledeployment
 
-kubectl delete service hello-world
+kubectl delete service my-service
 
 ##### Auto Scaling 
 # check status of autoscaler

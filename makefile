@@ -10,14 +10,17 @@ help: ## This is help.
 # Get cluster status
 status:
 	kubectl get nodes
-	kubectl get pods
+	kubectl get deployments
+	kubectl get pods -owide
 	kubectl get svc
 
 deploy: ## Apply Deployment & Loadbalancer
 	kubectl apply -f stable-d.yaml
 	kubectl apply -f service.yaml
 
-scale:
+test:
+	kubectl apply -f test-d.yaml
+	kubectl apply -f service.yaml
 	kubectl apply -f autoscaler.yaml
 
 delete: ## Delete Deployment & Loadbalancer
