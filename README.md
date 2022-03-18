@@ -21,12 +21,15 @@
 - Deploy a Load Balancer which exposes the cluster on an External IP
 `make deploy`
 ---
+- Delete the Production resources
+`make delete`
+---
+- Delete and Redploy the Production resources (if updating the image release)
+`make refresh`
+---
 - Deploy a test deployment of 3 pods on the cluster
 - Deploy a test Load balancer for the test deployment
 `make test`
----
-- Delete the Production resources
-`make delete`
 ---
 - Delete the test resources
 `make stop`

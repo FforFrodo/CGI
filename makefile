@@ -23,6 +23,10 @@ test: ## Apply Testing deployment and test loadbalancer
 	kubectl apply -f service.yaml
 	kubectl apply -f autoscaler.yaml
 
+refresh: ## Apply the deployment again if image changes
+	kubectl delete deploy stabledeployment
+	kubectl apply -f stable-d.yaml
+
 delete: ## Delete Deployment & Loadbalancer
 	kubectl delete deploy stabledeployment
 	kubectl delete service my-service
